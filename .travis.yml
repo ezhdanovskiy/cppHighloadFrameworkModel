@@ -1,0 +1,13 @@
+language: cpp
+compiler: gcc
+os: linux
+
+before_install:
+  - g++ -v
+
+script:
+  - mkdir build && cd build && cmake .. && make VERBOSE=1
+  - ./cppSwipe
+
+notifications:
+  slack: j0ny:tlJolYCjWs5eI2DmeZFry8sa
