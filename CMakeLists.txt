@@ -3,6 +3,8 @@ project(cppSwipe)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+add_subdirectory(gmock)
+
 include_directories(models)
 
 set(SOURCE_FILES
