@@ -5,37 +5,19 @@
 
 class User {
 public:
-    User(int id, const std::string &name, const std::string &lastname) : id(id), name(name), lastname(lastname) { }
+    User(uint32_t id);
 
-    int getId() const {
-        return id;
-    }
-
-    void setId(int id) {
-        User::id = id;
-    }
-
-    const std::string &getName() const {
-        return name;
-    }
-
-    void setName(const std::string &name) {
-        User::name = name;
-    }
-
-    const std::string &getLastname() const {
-        return lastname;
-    }
-
-    void setLastname(const std::string &lastname) {
-        User::lastname = lastname;
-    }
+    uint32_t getId() const;
+    void setId(uint32_t id);
+    const std::string &getName() const;
+    void setName(const std::string &name);
+    const std::string &getLastname() const;
+    void setLastname(const std::string &lastname);
 
 private:
-    int id;
+    uint32_t id;
     std::string name;
     std::string lastname;
 };
-
 
 #endif //CPPSWIPE_USER_H
