@@ -3,7 +3,6 @@ compiler: gcc
 os: linux
 
 before_install:
-  - g++ -v
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
 
@@ -11,12 +10,10 @@ install:
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" = "g++" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90; fi
 
-after_install:
-  - g++ -v
 
 script:
   - mkdir build && cd build && cmake .. && make VERBOSE=1
-  - ./cppSwipe
+  - ./swipe
 
 notifications:
   slack: j0ny:tlJolYCjWs5eI2DmeZFry8sa
