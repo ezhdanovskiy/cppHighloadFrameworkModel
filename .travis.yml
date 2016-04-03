@@ -9,11 +9,28 @@ before_install:
 install:
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" = "g++" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90; fi
-
+  - if [ "$CXX" = "g++" ]; then sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.8 90; fi
+  - git clone https://github.com/linux-test-project/lcov.git && cd lcov && sudo make install
 
 script:
   - mkdir build && cd build && cmake .. && make VERBOSE=1
+  - lcov --zerocounters --directory ./
   - ./swipe
+
+after_success:
+  # Preparing Coveralls data by changind data format to a readable one
+  - lcov --capture --directory ./ --base-directory ./ --output-file coverage.info
+
+  # ... erasing /usr* and 3rdparty folders data
+  - lcov --remove coverage.info "/usr*" "*3rdparty*" -o coverage.info
+
+  # generate html report
+#  - genhtml coverage.info --output-directory coverage.out
+#  - ls -alF coverage.out
+
+  # Sending data to Coveralls
+  - gem install coveralls-lcov
+  - coveralls-lcov coverage.info
 
 notifications:
   slack: j0ny:tlJolYCjWs5eI2DmeZFry8sa
