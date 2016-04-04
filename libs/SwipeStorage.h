@@ -11,7 +11,7 @@ public:
     typedef uint32_t Key;
 
     struct Value {
-        int id;
+        Key id;
         std::string name;
         std::string lastname;
     };

@@ -7,11 +7,13 @@ namespace Model {
 
 class User {
 public:
-    User(uint32_t id);
+    typedef uint32_t TUserId;
 
-    uint32_t getId() const;
+    User(TUserId id);
 
-    void setId(uint32_t id);
+    TUserId getId() const;
+
+    void setId(TUserId id);
 
     const std::string &getName() const;
 
@@ -22,7 +24,7 @@ public:
     void setLastname(const std::string &lastname);
 
 private:
-    uint32_t id;
+    TUserId id;
     std::string name;
     std::string lastname;
 };

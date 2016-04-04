@@ -1,17 +1,17 @@
 #include "User.h"
 #include "SwipeStorage.h"
 
-Model::User::User(uint32_t id) : id(id) {
+Model::User::User(TUserId id) : id(id) {
     auto v = Swipe::Storage::get(id);
     name = v.name;
     lastname = v.lastname;
 }
 
-uint32_t Model::User::getId() const {
+Model::User::TUserId Model::User::getId() const {
     return id;
 }
 
-void Model::User::setId(uint32_t id) {
+void Model::User::setId(TUserId id) {
     User::id = id;
 }
 
