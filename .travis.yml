@@ -22,7 +22,7 @@ after_success:
   - lcov --capture --directory ./ --base-directory ./ --output-file coverage.info
 
   # ... erasing /usr* and 3rdparty folders data
-  - lcov --remove coverage.info "/usr*" "*3rdparty*" -o coverage.info
+  - lcov --remove coverage.info "/usr*" "*gmock*" -o coverage.info
 
   # generate html report
 #  - genhtml coverage.info --output-directory coverage.out
