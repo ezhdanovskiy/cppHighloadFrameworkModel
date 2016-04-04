@@ -15,7 +15,7 @@ install:
 script:
   - mkdir $TRAVIS_BUILD_DIR/build && cd $TRAVIS_BUILD_DIR/build && cmake .. && make VERBOSE=1
   - lcov --zerocounters --directory ./
-  - ./swipe
+  - ctest
 
 after_success:
   # Preparing Coveralls data by changind data format to a readable one
