@@ -2,7 +2,7 @@
 #include "SwipeStorage.h"
 
 Model::User::User(TUserId id) : id(id) {
-    auto v = Swipe::Storage::get(id);
+    auto v = Swipe::Storage::getUser(id);
     name = v.name;
     lastname = v.lastname;
 }

@@ -8,7 +8,7 @@ struct ModelUserTest : public ::testing::Test {
 
     void SetUp() {
         Model::User::TUserId userId = firstNotExistentUserId;
-        Swipe::Storage::add(userId, {userId, "John", "Smith"});
+        Swipe::Storage::addUser(userId, {userId, "John", "Smith"});
         ++userId;
         firstNotExistentUserId = userId;
     };
@@ -24,7 +24,7 @@ TEST_F(ModelUserTest, ConstructorOfNotExistentUser) {
 }
 
 TEST_F(ModelUserTest, ConstructorOfExistentUser) {
-    Swipe::Storage::add(1, {1, "John", "Smith"});
+    Swipe::Storage::addUser(1, {1, "John", "Smith"});
     Model::User user(1);
     EXPECT_EQ(1, user.getId());
     EXPECT_EQ("John", user.getName());
