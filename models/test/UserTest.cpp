@@ -24,7 +24,6 @@ TEST_F(ModelUserTest, ConstructorOfNotExistentUser) {
 }
 
 TEST_F(ModelUserTest, ConstructorOfExistentUser) {
-    Swipe::Storage::addUser(1, {1, "John", "Smith"});
     Model::User user(1);
     EXPECT_EQ(1, user.getId());
     EXPECT_EQ("John", user.getName());
