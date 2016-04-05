@@ -20,4 +20,4 @@ set(SOURCE_FILES
     ${CMAKE_SOURCE_DIR}/src/main.cpp
 )
 add_executable(${BIN_NAME} ${SOURCE_FILES})
-target_link_libraries(${BIN_NAME} Models)
+target_link_libraries(${BIN_NAME} UserStorage Models)
