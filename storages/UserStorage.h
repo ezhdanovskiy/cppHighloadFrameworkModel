@@ -1,8 +1,9 @@
 #pragma once
 
 #include <map>
-namespace Swipe {
+
 namespace Storage {
+namespace User {
 
 typedef uint32_t Key;
 
@@ -12,9 +13,9 @@ struct Value {
     std::string lastname;
 };
 
-void addUser(const Key &key, const Value &value);
+void add(const Key &key, const Value &value);
 
-Value getUser(const Key &key);
+Value get(const Key &key);
 
 }
 }

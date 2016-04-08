@@ -1,5 +1,5 @@
 #include <User.h>
-#include <SwipeStorage.h>
+#include <UserStorage.h>
 
 #include <gtest/gtest.h>
 
@@ -8,7 +8,7 @@ struct ModelUserTest : public ::testing::Test {
 
     void SetUp() {
         Model::User::TUserId userId = firstNotExistentUserId;
-        Swipe::Storage::addUser(userId, {userId, "John", "Smith"});
+        Storage::User::add(userId, {userId, "John", "Smith"});
         ++userId;
         firstNotExistentUserId = userId;
     };

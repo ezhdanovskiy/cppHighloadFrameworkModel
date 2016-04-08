@@ -1,9 +1,9 @@
-#include "SwipeStorage.h"
+#include "UserStorage.h"
 
 #include <iostream>
 
-namespace Swipe {
 namespace Storage {
+namespace User {
 
 class UsersStorage {
 public:
@@ -25,11 +25,11 @@ private:
     std::map<Key, Value> storage;
 };
 
-void addUser(const Key &key, const Value &value) {
+void add(const Key &key, const Value &value) {
     UsersStorage::getInstance().add(key, value);
 };
 
-Value getUser(const Key &key) {
+Value get(const Key &key) {
     return UsersStorage::getInstance().get(key);
 };
 

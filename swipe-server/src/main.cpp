@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <SwipeStorage.h>
+#include <UserStorage.h>
 #include <User.h>
 #include <SwipeEvent.h>
 #include <Subscriptions.h>
@@ -8,8 +8,8 @@
 using namespace std;
 
 int main() {
-    Swipe::Storage::addUser(1, {1, "John", "Smith"});
-    Swipe::Storage::addUser(2, {2, "George", "Washington"});
+    Storage::User::add(1, {1, "John", "Smith"});
+    Storage::User::add(2, {2, "George", "Washington"});
 
     Model::User user1(1);
     Model::User user2(2);

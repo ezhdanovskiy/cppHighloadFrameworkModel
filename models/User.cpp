@@ -1,13 +1,13 @@
 #include "User.h"
 
-#include <SwipeStorage.h>
+#include <UserStorage.h>
 
 #include <iostream>
 
 using namespace std;
 
 Model::User::User(TUserId id) : id(id) {
-    auto v = Swipe::Storage::getUser(id);
+    auto v = Storage::User::get(id);
     name = v.name;
     lastname = v.lastname;
     cout << "Hello, I am " << name << "!" << endl;
