@@ -1,5 +1,4 @@
-#ifndef CPPSWIPE_USER_H
-#define CPPSWIPE_USER_H
+#pragma once
 
 #include <string>
 
@@ -30,5 +29,3 @@ private:
 };
 
 }
-
-#endif //CPPSWIPE_USER_H
