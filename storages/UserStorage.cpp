@@ -8,8 +8,10 @@ namespace User {
 class UsersStorage {
 public:
 
-    void add(const Key &key, const Value &value) {
-        storage[key] = value;
+    Key add(const Value &value) {
+        Key key = storage.size()+1;
+        storage[key] = Value(value.name, value.lastname).setId(key);
+        return key;
     };
 
     Value get(const Key &key) {
@@ -25,8 +27,8 @@ private:
     std::map<Key, Value> storage;
 };
 
-void add(const Key &key, const Value &value) {
-    UsersStorage::getInstance().add(key, value);
+Key add(const Value &value) {
+    return UsersStorage::getInstance().add(value);
 };
 
 Value get(const Key &key) {

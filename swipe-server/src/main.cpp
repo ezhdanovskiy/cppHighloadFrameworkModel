@@ -8,8 +8,8 @@
 using namespace std;
 
 int main() {
-    Storage::User::add(1, {1, "John", "Smith"});
-    Storage::User::add(2, {2, "George", "Washington"});
+    Storage::User::add({"John", "Smith"});
+    Storage::User::add({"George", "Washington"});
 
     Model::User user1(1);
     Model::User user2(2);

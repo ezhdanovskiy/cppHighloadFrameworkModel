@@ -5,15 +5,24 @@
 namespace Storage {
 namespace User {
 
-typedef uint32_t Key;
+typedef uint64_t Key;
 
 struct Value {
-    Key id;
+    Value() { }
+
+    Value(const std::string &name, const std::string &lastname) : name(name), lastname(lastname) { }
+
+    Value& setId(Key id) {
+        Value::id = id;
+        return *this;
+    }
+
+    Key id = 0;
     std::string name;
     std::string lastname;
 };
 
-void add(const Key &key, const Value &value);
+Key add(const Value &value);
 
 Value get(const Key &key);
 

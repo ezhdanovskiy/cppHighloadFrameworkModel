@@ -6,7 +6,7 @@ namespace Model {
 
 class User {
 public:
-    typedef uint32_t TUserId;
+    typedef uint64_t TUserId;
 
     User(TUserId id);
 

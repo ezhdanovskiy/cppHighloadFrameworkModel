@@ -7,10 +7,8 @@ struct ModelUserTest : public ::testing::Test {
     Model::User::TUserId firstNotExistentUserId = 1;
 
     void SetUp() {
-        Model::User::TUserId userId = firstNotExistentUserId;
-        Storage::User::add(userId, {userId, "John", "Smith"});
-        ++userId;
-        firstNotExistentUserId = userId;
+        firstNotExistentUserId = Storage::User::add({"John", "Smith"});
+        firstNotExistentUserId++;
     };
 
     void TearDown() {};

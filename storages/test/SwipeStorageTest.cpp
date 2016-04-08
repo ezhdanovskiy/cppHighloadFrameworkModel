@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 TEST(SwipeStorage, SimpleAddAndGet) {
-    Storage::User::add(1, {1, "John", "Smith"});
+    Storage::User::add({"John", "Smith"});
     auto user = Storage::User::get(1);
     EXPECT_EQ(1, user.id);
     EXPECT_EQ("John", user.name);
