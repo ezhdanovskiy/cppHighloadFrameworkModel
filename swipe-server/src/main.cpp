@@ -1,17 +1,21 @@
 #include <iostream>
 
+#include <SwipeStorage.h>
 #include <User.h>
 #include <SwipeEvent.h>
-#include <SwipeStorage.h>
+#include <Subscriptions.h>
 
 using namespace std;
 
 int main() {
     Swipe::Storage::addUser(1, {1, "John", "Smith"});
-    Model::User user(1);
-    cout << "Hello, World! I am " << user.getName() << "!" << endl;
-    Model::SwipeEvent event(Model::SwipeEvent::Type::publicEv, 1);
-    event.setText("Event01");
-    cout << user.getName() << " creates event '" << event.getText() << "'." << endl;
+    Swipe::Storage::addUser(2, {2, "George", "Washington"});
+
+    Model::User user1(1);
+    Model::User user2(2);
+
+    Swipe::Subscription::subscribe(user1, user2);
+
+    Model::SwipeEvent event(Model::SwipeEvent::Type::publicEv, 1, user1, "Event01");
     return 0;
 }
