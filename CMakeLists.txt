@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(cppSwipe)
 
-set(BIN_NAME swipe)
+
 
 enable_testing()
 
@@ -15,9 +15,4 @@ include_directories(${CMAKE_SOURCE_DIR}/models)
 add_subdirectory(${CMAKE_SOURCE_DIR}/gmock)
 add_subdirectory(${CMAKE_SOURCE_DIR}/storages)
 add_subdirectory(${CMAKE_SOURCE_DIR}/models)
-
-set(SOURCE_FILES
-    ${CMAKE_SOURCE_DIR}/src/main.cpp
-)
-add_executable(${BIN_NAME} ${SOURCE_FILES})
-target_link_libraries(${BIN_NAME} UserStorage Models)
+add_subdirectory(${CMAKE_SOURCE_DIR}/swipe-server)
