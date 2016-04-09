@@ -1,11 +1,14 @@
 #include "Event.h"
 
+#include <EventStorage.h>
+
 #include <iostream>
 
 using namespace std;
 
-Swipe::Event::Event(Type type, TEventId id, const Model::User &owner, const std::string &text) : type(type), id(id), ownerId(owner.getId()), text(text) {
-    cout << owner.getName() << " creates chat '" << text << "'." << endl;
+Swipe::Event::Event(Type type, const Model::User &owner, const std::string &text) : type(type), ownerId(owner.getId()), text(text) {
+    cout << owner.getName() << " creates event '" << text << "'." << endl;
+    id = Storage::Event::add({type, owner.getId(), text});
 }
 
 const std::string &Swipe::Event::getText() const {

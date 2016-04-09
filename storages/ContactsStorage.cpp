@@ -1,4 +1,4 @@
-#include "Contacts.h"
+#include "ContactsStorage.h"
 
 #include <set>
 #include <map>

@@ -14,11 +14,11 @@ public:
     };
     typedef uint32_t TEventId;
 
-    Event(Type type, TEventId id, const Model::User &owner, const std::string &text);
+    Event(Type type, const Model::User &owner, const std::string &text);
 
 private:
+    TEventId id = 0;
     Type type;
-    TEventId id;
     Model::User::TUserId ownerId;
     std::string text;
 public:

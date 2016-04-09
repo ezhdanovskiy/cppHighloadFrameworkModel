@@ -19,6 +19,6 @@ int main() {
     Swipe::Subscription::subscribe(user1, user2);
     Swipe::Subscription::subscribe(user1, user3);
 
-    Swipe::Event event(Swipe::Event::Type::publicEv, 1, user1, "Event01");
+    Swipe::Event event(Swipe::Event::Type::publicEv, user1, "Event01");
     return 0;
 }

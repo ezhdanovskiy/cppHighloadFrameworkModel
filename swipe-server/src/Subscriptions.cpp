@@ -1,6 +1,6 @@
 #include "Subscriptions.h"
 
-#include <Contacts.h>
+#include <ContactsStorage.h>
 
 #include <iostream>
 
