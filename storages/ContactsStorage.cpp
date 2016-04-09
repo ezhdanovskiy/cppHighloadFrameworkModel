@@ -23,6 +23,10 @@ public:
         return storage[userId];
     }
 
+    TContactIds getFollowings(TContactId followerId) {
+        return invertedIndex[followerId];
+    }
+
 private:
     TContactMap storage;
     TContactMap invertedIndex;
@@ -34,6 +38,10 @@ void addFollower(TContactId userId, TContactId followerId) {
 
 TContactIds getFollowers(TContactId userId) {
     return Storage::getInstance().getFollowers(userId);
+}
+
+TContactIds getFollowings(TContactId followerId) {
+    return Storage::getInstance().getFollowings(followerId);
 }
 
 }

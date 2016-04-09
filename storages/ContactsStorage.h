@@ -13,5 +13,7 @@ void addFollower(TContactId userId, TContactId followerId);
 
 TContactIds getFollowers(TContactId userId);
 
+TContactIds getFollowings(TContactId followerId);
+
 }
 }
