@@ -2,7 +2,7 @@
 
 #include <UserStorage.h>
 #include <User.h>
-#include <SwipeEvent.h>
+#include <Event.h>
 #include <Subscriptions.h>
 
 using namespace std;
@@ -19,6 +19,6 @@ int main() {
     Swipe::Subscription::subscribe(user1, user2);
     Swipe::Subscription::subscribe(user1, user3);
 
-    Model::SwipeEvent event(Model::SwipeEvent::Type::publicEv, 1, user1, "Event01");
+    Swipe::Event event(Swipe::Event::Type::publicEv, 1, user1, "Event01");
     return 0;
 }
