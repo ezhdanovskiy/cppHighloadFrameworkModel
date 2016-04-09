@@ -29,3 +29,16 @@ TEST(ContactsStorage, getFollowings) {
     EXPECT_TRUE(followers.find(userId1) != followers.end());
     EXPECT_TRUE(followers.find(userId2) != followers.end());
 }
+
+TEST(ContactsStorage, addFollowers) {
+    Storage::Contacts::TContactId userId = 1;
+    Storage::Contacts::TContactIds followerIds = {2, 3, 4};
+
+    Storage::Contacts::addFollowers(userId, followerIds);
+    auto followers = Storage::Contacts::getFollowers(userId);
+
+    EXPECT_EQ(3, followers.size());
+    for (const auto &followerId : followerIds) {
+        EXPECT_TRUE(followers.find(followerId) != followers.end());
+    }
+}

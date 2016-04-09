@@ -19,6 +19,13 @@ public:
         invertedIndex[followerId].insert(userId);
     }
 
+    void addFollowers(TContactId userId, const TContactIds& followerIds) {
+        storage[userId].insert(followerIds.begin(), followerIds.end());
+        for (const TContactId &followerId : followerIds) {
+            invertedIndex[followerId].insert(userId);
+        }
+    }
+
     TContactIds getFollowers(TContactId userId) {
         return storage[userId];
     }
@@ -34,6 +41,10 @@ private:
 
 void addFollower(TContactId userId, TContactId followerId) {
     Storage::getInstance().addFollower(userId, followerId);
+}
+
+void addFollowers(TContactId userId, const TContactIds &followerIds) {
+    Storage::getInstance().addFollowers(userId, followerIds);
 }
 
 TContactIds getFollowers(TContactId userId) {
