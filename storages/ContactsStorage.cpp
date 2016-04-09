@@ -1,6 +1,5 @@
 #include "ContactsStorage.h"
 
-#include <set>
 #include <map>
 
 namespace Storage {
@@ -19,6 +18,11 @@ public:
         storage[userId].insert(followerId);
         invertedIndex[followerId].insert(userId);
     }
+
+    TContactIds getFollowers(TContactId userId) {
+        return storage[userId];
+    }
+
 private:
     TContactMap storage;
     TContactMap invertedIndex;
@@ -26,6 +30,10 @@ private:
 
 void addFollower(TContactId userId, TContactId followerId) {
     Storage::getInstance().addFollower(userId, followerId);
+}
+
+TContactIds getFollowers(TContactId userId) {
+    return Storage::getInstance().getFollowers(userId);
 }
 
 }
