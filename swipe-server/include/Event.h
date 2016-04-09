@@ -5,16 +5,16 @@
 #include <inttypes.h>
 #include <string>
 
-namespace Model {
+namespace Swipe {
 
-class SwipeEvent {
+class Event {
 public:
     enum Type {
         publicEv, friendsOnly, group
     };
     typedef uint32_t TEventId;
 
-    SwipeEvent(Type type, TEventId id, const Model::User &owner, const std::string &text);
+    Event(Type type, TEventId id, const Model::User &owner, const std::string &text);
 
 private:
     Type type;
