@@ -1,24 +1,27 @@
 #include <iostream>
+#include <memory>
 
 #include <UserStorage.h>
 #include <User.h>
 #include <Event.h>
 #include <Subscriptions.h>
+#include "SwipeImpl.h"
 
 using namespace std;
 
 int main() {
-    Storage::User::add({"John", "Smith"});
-    Storage::User::add({"George", "Washington"});
-    Storage::User::add({"Nicolas", "Cage"});
+    auto usersStorage = std::make_shared<Storage::Users>();
+    auto contactsStorage = std::make_shared<Storage::Contacts2>();
+    auto eventsStorage = std::make_shared<Storage::Events>();
+    Swipe::Impl impl(usersStorage.get(), contactsStorage.get(), eventsStorage.get());
 
-    Model::User user1(1);
-    Model::User user2(2);
-    Model::User user3(3);
+    auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
+    auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");
+    auto userId3 = impl.addUser("Nicolas", "Cage", "N.Cage@ya.ru");
 
-    Swipe::Subscription::subscribe(user1, user2);
-    Swipe::Subscription::subscribe(user1, user3);
+    impl.subscribe(userId1, userId2);
+    impl.subscribe(userId1, userId3);
 
-    Swipe::Event event(Swipe::Event::Type::publicEv, user1, "Event01");
+    impl.addEvent(Swipe::Event::Type::publicEv, userId1, "Event1");
     return 0;
 }

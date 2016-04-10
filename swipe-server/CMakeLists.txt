@@ -10,8 +10,9 @@ set(SOURCE_FILES
     src/main.cpp
     src/Event.cpp
     src/Subscriptions.cpp
+    src/SwipeImpl.cpp
     )
 add_executable(${BIN_NAME} ${SOURCE_FILES})
-target_link_libraries(${BIN_NAME} ${STORAGE_LIBS} UserModel)
+target_link_libraries(${BIN_NAME} UserModel ${STORAGE_LIBS})
 
 add_subdirectory(test)
