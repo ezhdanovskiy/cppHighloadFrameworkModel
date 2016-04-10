@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(EventStorage, SimpleAddAndGet) {
+TEST(EventStorageTest, SimpleAddAndGet) {
     int eventType = 1;
     Model::User::TUserId ownerId = 1;
     std::string eventText = "Event1";

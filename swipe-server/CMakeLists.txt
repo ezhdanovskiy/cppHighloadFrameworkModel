@@ -11,3 +11,5 @@ set(SOURCE_FILES
     )
 add_executable(${BIN_NAME} ${SOURCE_FILES})
 target_link_libraries(${BIN_NAME} UserStorage ContactsStorage EventStorage Models)
+
+add_subdirectory(test)

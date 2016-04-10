@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(ContactsStorage, getFollowers) {
+TEST(ContactsStorageTest, getFollowers) {
     Storage::Contacts::TContactId userId = 1;
     Storage::Contacts::TContactId followerId1 = 2;
     Storage::Contacts::TContactId followerId2 = 3;
@@ -16,7 +16,7 @@ TEST(ContactsStorage, getFollowers) {
     EXPECT_TRUE(followers.find(followerId2) != followers.end());
 }
 
-TEST(ContactsStorage, getFollowings) {
+TEST(ContactsStorageTest, getFollowings) {
     Storage::Contacts::TContactId userId1 = 1;
     Storage::Contacts::TContactId userId2 = 2;
     Storage::Contacts::TContactId followerId = 3;
@@ -30,7 +30,7 @@ TEST(ContactsStorage, getFollowings) {
     EXPECT_TRUE(followers.find(userId2) != followers.end());
 }
 
-TEST(ContactsStorage, addFollowers) {
+TEST(ContactsStorageTest, addFollowers) {
     Storage::Contacts::TContactId userId = 1;
     Storage::Contacts::TContactIds followerIds = {2, 3, 4};
 
