@@ -4,19 +4,23 @@
 #include <gtest/gtest.h>
 
 struct ModelUserTest : public ::testing::Test {
-    Model::User::TUserId firstNotExistentUserId = 1;
 
     void SetUp() {
-        firstNotExistentUserId = Storage::User::add({"John", "Smith", "J.Smith@ya.ru"});
-        firstNotExistentUserId++;
     };
 
     void TearDown() {};
+
+    static void TearDownTestCase() {
+    }
+
+    static void SetUpTestCase() {
+        Storage::User::add({"John", "Smith", "J.Smith@ya.ru"});
+    }
 };
 
 TEST_F(ModelUserTest, ConstructorOfNotExistentUser) {
-    Model::User user(firstNotExistentUserId);
-    EXPECT_EQ(firstNotExistentUserId, user.getId());
+    Model::User user(15);
+    EXPECT_EQ(15, user.getId());
     EXPECT_EQ("", user.getName());
     EXPECT_EQ("", user.getLastname());
 }
@@ -29,13 +33,13 @@ TEST_F(ModelUserTest, ConstructorOfExistentUser) {
 }
 
 TEST_F(ModelUserTest, Setters) {
-    Model::User user(firstNotExistentUserId);
-    EXPECT_EQ(firstNotExistentUserId, user.getId());
+    Model::User user(23);
+    EXPECT_EQ(23, user.getId());
     EXPECT_EQ("", user.getName());
     EXPECT_EQ("", user.getLastname());
 
-    user.setId(firstNotExistentUserId+1);
-    EXPECT_EQ(firstNotExistentUserId+1, user.getId());
+    user.setId(23+1);
+    EXPECT_EQ(23+1, user.getId());
 
     user.setName("John");
     EXPECT_EQ("John", user.getName());

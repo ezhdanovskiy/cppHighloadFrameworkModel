@@ -3,6 +3,7 @@
 #include <map>
 #include <inttypes.h>
 #include <string>
+#include <iostream>
 
 namespace Storage {
 
@@ -29,10 +30,12 @@ public:
     Key add(const Value &value) {
         Key key = storage.size() + 1;
         storage[key] = value;
+        std::cout << "Storage::Users::add(" << key << ", " << value.name << ", " << value.lastname << ", " << value.email << ")" << std::endl;
         return key;
     };
 
     Value get(const Key &key) {
+        std::cout << "Storage::Users::add(" << key << ", " << storage[key].name << ", " << storage[key].lastname << ", " << storage[key].email << ")" << std::endl;
         return storage[key].setId(key);
     };
 

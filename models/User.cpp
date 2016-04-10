@@ -4,13 +4,11 @@
 
 #include <iostream>
 
-using namespace std;
-
 Model::User::User(TUserId id) : id(id) {
     auto v = Storage::User::get(id);
     name = v.name;
     lastname = v.lastname;
-    cout << "Hello, I am " << name << "!" << endl;
+    std::cout << "Hello, I am " << name << "! id=" << id << std::endl;
 }
 
 Model::User::TUserId Model::User::getId() const {
