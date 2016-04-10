@@ -1,23 +1,26 @@
-#include <UserStorage.h>
-#include <Subscriptions.h>
+#include "SwipeImpl.h"
 
 #include <gtest/gtest.h>
+#include <memory>
 
 struct SwipeServerLogicTest : public ::testing::Test {
-    void SetUp() {
-        Storage::User::add({"John", "Smith", "J.Smith@ya.ru"});
-        Storage::User::add({"George", "Washington", "G.Washington@ya.ru"});
-        Storage::User::add({"Nicolas", "Cage", "N.Cage@ya.ru"});
-    };
+    void SetUp() { }
 
-    void TearDown() { };
+    void TearDown() { }
 };
 
 TEST_F(SwipeServerLogicTest, UserSubscription) {
-    Model::User user1(1);
-    Model::User user2(2);
-    Model::User user3(3);
+    Storage::Users usersStorage = Storage::Users::getInstance();
+    auto contactsStorage = std::make_shared<Storage::Contacts2>();
+    auto eventsStorage = std::make_shared<Storage::Events>();
+    Swipe::Impl impl(&usersStorage, contactsStorage.get(), eventsStorage.get());
 
-    Swipe::Subscription::subscribe(user1, user2);
-    Swipe::Subscription::subscribe(user1, user3);
+    auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
+    auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");
+    auto userId3 = impl.addUser("Nicolas", "Cage", "N.Cage@ya.ru");
+
+    impl.subscribe(userId1, userId2);
+    impl.subscribe(userId1, userId3);
+
+    impl.addEvent(Swipe::Event::Type::publicEv, userId1, "Event1");
 }
