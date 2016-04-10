@@ -1,5 +1,5 @@
 project(Models)
 
-add_library(Models User.cpp)
+add_library(UserModel User.cpp)
 
 add_subdirectory(test)

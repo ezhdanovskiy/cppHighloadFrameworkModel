@@ -2,6 +2,8 @@ project(SwipeServer)
 
 set(BIN_NAME swipe-server)
 
+include(${CMAKE_SOURCE_DIR}/storages/CMakeLibs.cmake)
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 set(SOURCE_FILES
@@ -10,6 +12,6 @@ set(SOURCE_FILES
     src/Subscriptions.cpp
     )
 add_executable(${BIN_NAME} ${SOURCE_FILES})
-target_link_libraries(${BIN_NAME} UserStorage ContactsStorage EventStorage Models)
+target_link_libraries(${BIN_NAME} ${STORAGE_LIBS} UserModel)
 
 add_subdirectory(test)

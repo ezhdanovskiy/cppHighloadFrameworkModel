@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(UserStorage, SimpleAddAndGet) {
+TEST(UserStorageTest, SimpleAddAndGet) {
     Storage::User::add({"John", "Smith"});
     auto user = Storage::User::get(1);
 

@@ -1,0 +1,1 @@
+set(STORAGE_LIBS UserStorage ContactsStorage EventStorage)
