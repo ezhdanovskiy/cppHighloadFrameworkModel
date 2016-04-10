@@ -7,3 +7,6 @@ target_link_libraries(UserStorageTest UserStorage)
 
 add_gmock_test(ContactsStorageTest ContactsStorageTest.cpp)
 target_link_libraries(ContactsStorageTest ContactsStorage)
+
+add_gmock_test(EventStorageTest EventStorageTest.cpp)
+target_link_libraries(EventStorageTest EventStorage)

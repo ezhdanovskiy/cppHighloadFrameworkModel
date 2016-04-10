@@ -1,6 +1,8 @@
 #pragma once
 
 #include <map>
+#include <inttypes.h>
+#include <string>
 
 namespace Storage {
 namespace User {
