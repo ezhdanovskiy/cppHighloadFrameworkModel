@@ -10,10 +10,10 @@
 using namespace std;
 
 int main() {
-    auto usersStorage = std::make_shared<Storage::Users>();
+    Storage::Users usersStorage = Storage::Users::getInstance();
     auto contactsStorage = std::make_shared<Storage::Contacts2>();
     auto eventsStorage = std::make_shared<Storage::Events>();
-    Swipe::Impl impl(usersStorage.get(), contactsStorage.get(), eventsStorage.get());
+    Swipe::Impl impl(&usersStorage, contactsStorage.get(), eventsStorage.get());
 
     auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
     auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");

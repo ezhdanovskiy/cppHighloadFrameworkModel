@@ -7,7 +7,7 @@ struct ModelUserTest : public ::testing::Test {
     Model::User::TUserId firstNotExistentUserId = 1;
 
     void SetUp() {
-        firstNotExistentUserId = Storage::User::add({"John", "Smith"});
+        firstNotExistentUserId = Storage::User::add({"John", "Smith", "J.Smith@ya.ru"});
         firstNotExistentUserId++;
     };
 

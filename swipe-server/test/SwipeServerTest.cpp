@@ -5,9 +5,9 @@
 
 struct SwipeServerLogicTest : public ::testing::Test {
     void SetUp() {
-        Storage::User::add({"John", "Smith"});
-        Storage::User::add({"George", "Washington"});
-        Storage::User::add({"Nicolas", "Cage"});
+        Storage::User::add({"John", "Smith", "J.Smith@ya.ru"});
+        Storage::User::add({"George", "Washington", "G.Washington@ya.ru"});
+        Storage::User::add({"Nicolas", "Cage", "N.Cage@ya.ru"});
     };
 
     void TearDown() { };

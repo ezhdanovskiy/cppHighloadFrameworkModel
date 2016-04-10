@@ -38,30 +38,22 @@ public:
 
 private:
     std::map<Key, Value> storage;
+
+// singleton ------------------------------
+    Users() { };
+public:
+    static Users &getInstance() {
+        static Users instance;
+        return instance;
+    }
+
 };
 
 namespace User {
 
-typedef uint64_t Key;
+Users::Value get(const Users::Key &key);
 
-struct Value {
-    Value() { }
-
-    Value(const std::string &name, const std::string &lastname) : name(name), lastname(lastname) { }
-
-    Value &setId(Key id) {
-        Value::id = id;
-        return *this;
-    }
-
-    Key id = 0;
-    std::string name;
-    std::string lastname;
-};
-
-Key add(const Value &value);
-
-Value get(const Key &key);
+Users::Key add(const Users::Value &value);
 
 }
 }
