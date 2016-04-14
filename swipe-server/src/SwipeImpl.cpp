@@ -3,7 +3,7 @@
 namespace Swipe {
 
 Model::User::TUserId Impl::addUser(const std::string &name, const std::string &lastname, const std::string &email) {
-    return usersStorage->add({name, lastname, email});
+    return Storage::User::add({name, lastname, email});
 }
 
 void Impl::subscribe(const Model::User::TUserId &userId, const Model::User::TUserId &followerId) {

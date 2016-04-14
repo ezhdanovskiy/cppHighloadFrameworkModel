@@ -13,7 +13,7 @@ namespace Swipe {
 
 class Impl {
 public:
-    Impl(Storage::Users *users, Storage::Contacts2 *contacts, Storage::Events *events) : usersStorage(users), contactsStorage(contacts), eventsStorage(events) { }
+    Impl(Storage::Contacts2 *contacts, Storage::Events *events) : contactsStorage(contacts), eventsStorage(events) { }
 
     Model::User::TUserId addUser(const std::string &name, const std::string &lastname, const std::string &email);
 
@@ -22,7 +22,6 @@ public:
     void addEvent(Event::Type eventType, Model::User::TUserId ownerId, const std::string &text);
 
 private:
-    Storage::Users *usersStorage;
     Storage::Contacts2 *contactsStorage;
     Storage::Events *eventsStorage;
 };

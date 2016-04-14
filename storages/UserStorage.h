@@ -7,56 +7,28 @@
 
 namespace Storage {
 
-class Users {
-public:
-    typedef uint64_t Key;
-
-    struct Value {
-        Value() { }
-
-        Value(const std::string &name, const std::string &lastname, const std::string &email) : name(name), lastname(lastname), email(email) { }
-
-        Value &setId(Key id) {
-            Value::id = id;
-            return *this;
-        }
-
-        Key id = 0;
-        std::string name;
-        std::string lastname;
-        std::string email;
-    };
-
-    Key add(const Value &value) {
-        Key key = storage.size() + 1;
-        storage[key] = value;
-        std::cout << "Storage::Users::add(" << key << ", " << value.name << ", " << value.lastname << ", " << value.email << ")" << std::endl;
-        return key;
-    };
-
-    Value get(const Key &key) {
-        std::cout << "Storage::Users::add(" << key << ", " << storage[key].name << ", " << storage[key].lastname << ", " << storage[key].email << ")" << std::endl;
-        return storage[key].setId(key);
-    };
-
-private:
-    std::map<Key, Value> storage;
-
-// singleton ------------------------------
-    Users() { };
-public:
-    static Users &getInstance() {
-        static Users instance;
-        return instance;
-    }
-
-};
-
 namespace User {
+  typedef uint64_t Key;
 
-Users::Value get(const Users::Key &key);
+  struct Value {
+      Value() { }
 
-Users::Key add(const Users::Value &value);
+      Value(const std::string &name, const std::string &lastname, const std::string &email) : name(name), lastname(lastname), email(email) { }
+
+      Value &setId(Key id) {
+          Value::id = id;
+          return *this;
+      }
+
+      Key id = 0;
+      std::string name;
+      std::string lastname;
+      std::string email;
+  };
+
+Value get(const Key &key);
+
+Key add(const Value &value);
 
 }
 }
