@@ -1,5 +1,7 @@
 #include "UserStorage.h"
 
+#include <Logger.h>
+
 namespace Storage {
 namespace User {
 
@@ -9,7 +11,7 @@ namespace User {
       User::Key add(const User::Value &value) {
           User::Key key = storage.size() + 1;
           storage[key] = value;
-          std::cout << "Storage::Users::add(" << key << ", " << value.name << ", " << value.lastname << ", " << value.email << ")" << std::endl;
+          LOG("Storage::Users::add(" << key << ", " << value.name << ", " << value.lastname << ", " << value.email << ")")
           return key;
       };
 

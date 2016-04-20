@@ -1,6 +1,7 @@
 #pragma once
 
 #include <User.h>
+#include <Logger.h>
 
 #include <map>
 
@@ -29,6 +30,7 @@ public:
     Key add(const Value &value) {
         Key key = storage.size() + 1;
         storage[key] = value;
+        LOG("Storage::Event::add(" << key << ", type=" << value.type << ", ownerId=" << value.ownerId << ", text='" << value.text << "')")
         return key;
     };
 

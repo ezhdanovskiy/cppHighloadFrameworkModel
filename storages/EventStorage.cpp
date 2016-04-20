@@ -1,8 +1,6 @@
 #include "UserStorage.h"
 #include "EventStorage.h"
 
-#include <iostream>
-
 namespace Storage {
 namespace Event {
 
@@ -12,6 +10,7 @@ public:
     Key add(const Value &value) {
         Key key = storage.size()+1;
         storage[key] = Value(value.type, value.ownerId, value.text).setId(key);
+        LOG("Storage::Event::add(" << key << ", " << value.type << ", " << value.ownerId << ", '" << value.text << "')")
         return key;
     };
 
