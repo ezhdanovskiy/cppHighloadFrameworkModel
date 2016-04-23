@@ -18,9 +18,13 @@ public:
 
     TUserId addUser(const std::string &name, const std::string &lastname, const std::string &email);
 
+    Model::User getUser(const TUserId &userId);
+
     void addFollower(const TUserId &userId, const TUserId &followerId);
 
     void addFollowers(const TUserId &userId, const TUserIds &followerIds);
+
+    TUserIdsSet getFollowerIds(const TUserId &userId);
 
     void addEvent(Event::Type eventType, TUserId ownerId, const std::string &text);
 

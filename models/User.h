@@ -12,22 +12,45 @@ public:
 
     User(TUserId id);
 
-    TUserId getId() const;
+    User(TUserId id, const std::string &name, const std::string &lastname, const std::string &email) : id(id), name(name), lastname(lastname), email(email) { }
 
-    void setId(TUserId id);
+    TUserId getId() const {
+        return id;
+    }
 
-    const std::string &getName() const;
+    void setId(TUserId id) {
+        User::id = id;
+    }
 
-    void setName(const std::string &name);
+    const std::string &getName() const {
+        return name;
+    }
 
-    const std::string &getLastname() const;
+    void setName(const std::string &name) {
+        User::name = name;
+    }
 
-    void setLastname(const std::string &lastname);
+    const std::string &getLastname() const {
+        return lastname;
+    }
+
+    void setLastname(const std::string &lastname) {
+        User::lastname = lastname;
+    }
+
+    const std::string &getEmail() const {
+        return email;
+    }
+
+    void setEmail(const std::string &email) {
+        User::email = email;
+    }
 
 private:
     TUserId id;
     std::string name;
     std::string lastname;
+    std::string email;
 };
 
 } // namespace Model
