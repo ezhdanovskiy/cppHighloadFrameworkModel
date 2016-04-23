@@ -7,6 +7,8 @@
 
 namespace Storage {
 
+typedef Swipe::TUserId TUserId;
+
 class Events {
 public:
     typedef uint32_t Key;
@@ -14,7 +16,7 @@ public:
     struct Value {
         Value() { }
 
-        Value(int type, Model::User::TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
+        Value(int type, TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
 
         Value &setId(Key id) {
             Value::id = id;
@@ -23,7 +25,7 @@ public:
 
         Key id = 0;
         int type;
-        Model::User::TUserId ownerId;
+        TUserId ownerId;
         std::string text;
     };
 
@@ -49,7 +51,7 @@ typedef uint32_t Key;
 struct Value {
     Value() { }
 
-    Value(int type, Model::User::TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
+    Value(int type, TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
 
     Value &setId(Key id) {
         Value::id = id;
@@ -58,7 +60,7 @@ struct Value {
 
     Key id = 0;
     int type;
-    Model::User::TUserId ownerId;
+    TUserId ownerId;
     std::string text;
 };
 

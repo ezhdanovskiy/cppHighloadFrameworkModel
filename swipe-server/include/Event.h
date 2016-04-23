@@ -1,16 +1,16 @@
 #pragma once
 
-#include <User.h>
-
 #include <inttypes.h>
 #include <string>
+
+#include <User.h>
 
 namespace Swipe {
 
 class Event {
 public:
     enum Type {
-        publicEv, friendsOnly, group
+        open, friendsOnly, group
     };
     typedef uint32_t TEventId;
 
@@ -19,12 +19,13 @@ public:
 private:
     TEventId id = 0;
     Type type;
-    Model::User::TUserId ownerId;
+    TUserId ownerId;
     std::string text;
+
 public:
     const std::string &getText() const;
 
     void setText(const std::string &text);
 };
 
-}
+} // namespace Swipe

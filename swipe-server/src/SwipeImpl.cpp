@@ -4,19 +4,20 @@
 
 namespace Swipe {
 
-Model::User::TUserId Impl::addUser(const std::string &name, const std::string &lastname, const std::string &email) {
+TUserId Impl::addUser(const std::string &name, const std::string &lastname, const std::string &email) {
     return Storage::User::add({name, lastname, email});
 }
 
-void Impl::subscribe(const Model::User::TUserId &userId, const Model::User::TUserId &followerId) {
+void Impl::subscribe(const TUserId &userId, const TUserId &followerId) {
     contactsStorage->addFollower(userId, followerId);
 }
-void Impl::addEvent(Event::Type eventType, Model::User::TUserId ownerId, const std::string &text) {
+
+void Impl::addEvent(Event::Type eventType, TUserId ownerId, const std::string &text) {
     auto eventId = eventsStorage->add({eventType, ownerId, text});
     auto followers = contactsStorage->getFollowers(ownerId);
     LOG("followers.size=" << followers.size())
     switch (eventType) {
-        case Event::Type::publicEv: {
+        case Event::Type::open: {
             for (const auto &follower : followers) {
                 LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
             }
@@ -34,4 +35,4 @@ void Impl::addEvent(Event::Type eventType, Model::User::TUserId ownerId, const s
     }
 }
 
-}
+} // namespace Swipe

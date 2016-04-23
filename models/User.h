@@ -2,11 +2,13 @@
 
 #include <string>
 
+#include <SystemDefines.h>
+
 namespace Model {
 
 class User {
 public:
-    typedef uint64_t TUserId;
+    typedef Swipe::TUserId TUserId;
 
     User(TUserId id);
 
@@ -28,4 +30,4 @@ private:
     std::string lastname;
 };
 
-}
+} // namespace Model

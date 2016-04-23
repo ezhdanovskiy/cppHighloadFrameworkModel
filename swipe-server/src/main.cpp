@@ -7,8 +7,6 @@
 #include <Subscriptions.h>
 #include "SwipeImpl.h"
 
-using namespace std;
-
 int main() {
     auto contactsStorage = std::make_shared<Storage::Contacts2>();
     auto eventsStorage = std::make_shared<Storage::Events>();
@@ -21,6 +19,6 @@ int main() {
     impl.subscribe(userId1, userId2);
     impl.subscribe(userId1, userId3);
 
-    impl.addEvent(Swipe::Event::Type::publicEv, userId1, "Event1");
+    impl.addEvent(Swipe::Event::Type::open, userId1, "Event1");
     return 0;
 }

@@ -21,5 +21,5 @@ TEST_F(SwipeServerLogicTest, UserSubscription) {
     impl.subscribe(userId1, userId2);
     impl.subscribe(userId1, userId3);
 
-    impl.addEvent(Swipe::Event::Type::publicEv, userId1, "Event1");
+    impl.addEvent(Swipe::Event::Type::open, userId1, "Event1");
 }

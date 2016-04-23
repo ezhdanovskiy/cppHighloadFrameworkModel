@@ -4,33 +4,37 @@
 
 #include <iostream>
 
-Model::User::User(TUserId id) : id(id) {
+namespace Model {
+
+User::User(TUserId id) : id(id) {
     auto v = Storage::User::get(id);
     name = v.name;
     lastname = v.lastname;
     std::cout << "Hello, I am " << name << "! id=" << id << std::endl;
 }
 
-Model::User::TUserId Model::User::getId() const {
+User::TUserId User::getId() const {
     return id;
 }
 
-void Model::User::setId(TUserId id) {
+void User::setId(TUserId id) {
     User::id = id;
 }
 
-const std::string& Model::User::getName() const {
+const std::string& User::getName() const {
     return name;
 }
 
-void Model::User::setName(const std::string &name) {
+void User::setName(const std::string &name) {
     User::name = name;
 }
 
-const std::string& Model::User::getLastname() const {
+const std::string& User::getLastname() const {
     return lastname;
 }
 
-void Model::User::setLastname(const std::string &lastname) {
+void User::setLastname(const std::string &lastname) {
     User::lastname = lastname;
 }
+
+} // namespace Model
