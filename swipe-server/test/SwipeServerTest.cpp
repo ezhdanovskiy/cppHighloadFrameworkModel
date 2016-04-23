@@ -43,3 +43,21 @@ TEST_F(SwipeServerTest, UserSubscription) {
     EXPECT_EQ(1, followerIds.count(userId3));
     EXPECT_EQ(1, followerIds.count(userId4));
 }
+
+TEST_F(SwipeServerTest, Event) {
+    auto contactsStorage = std::make_shared<Storage::Contacts2>();
+    auto eventsStorage = std::make_shared<Storage::Events>();
+    Swipe::Impl impl(contactsStorage.get(), eventsStorage.get());
+
+    auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
+    auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");
+    auto userId3 = impl.addUser("Nicolas", "Cage", "N.Cage@ya.ru");
+    auto userId4 = impl.addUser("Emma", "Watson", "E.Watson@ya.ru");
+
+    impl.addFollowers(userId1, {userId2, userId3});
+    impl.addFollowers(userId2, {userId1, userId3});
+
+    impl.addEvent(userId1, "Event1", Swipe::Event::Type::open);
+    impl.addEvent(userId1, "Event2", Swipe::Event::Type::friendsOnly);
+    impl.addEvent(userId1, "Event3", Swipe::Event::Type::group, {userId2, userId4});
+}

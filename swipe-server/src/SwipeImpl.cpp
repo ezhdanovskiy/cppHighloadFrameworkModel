@@ -1,6 +1,6 @@
 #include "SwipeImpl.h"
 
-#include <Logger.h>
+#include <UserStorage.h>
 
 namespace Swipe {
 
@@ -27,24 +27,30 @@ TUserIdsSet Impl::getFollowerIds(const TUserId &userId) {
     return TUserIdsSet(contactIds.begin(), contactIds.end());
 }
 
-void Impl::addEvent(Event::Type eventType, TUserId ownerId, const std::string &text) {
+void Impl::addEvent(TUserId ownerId, const std::string &text, Event::Type eventType, const TUserIds &participantIds) {
     auto eventId = eventsStorage->add({eventType, ownerId, text});
-    auto followers = contactsStorage->getFollowers(ownerId);
-    LOG("followers.size=" << followers.size())
     switch (eventType) {
         case Event::Type::open: {
+            auto followers = contactsStorage->getFollowers(ownerId);
             for (const auto &follower : followers) {
                 LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
             }
             break;
         }
         case Event::Type::friendsOnly: {
+            auto followers = contactsStorage->getFollowers(ownerId);
+            auto followings = contactsStorage->getFollowings(ownerId);
+            for (const auto &follower : followers) {
+                if (followings.count(follower)) {
+                    LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
+                }
+            }
             break;
         }
         case Event::Type::group: {
-            break;
-        }
-        default: {
+            for (const auto &participantId : participantIds) {
+                LOG("Notify user(" << participantId << ") about event{" << eventId << ", '" << text << "'}")
+            }
             break;
         }
     }

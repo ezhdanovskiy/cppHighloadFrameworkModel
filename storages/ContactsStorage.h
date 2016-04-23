@@ -5,6 +5,7 @@
 #include <map>
 
 #include <SystemDefines.h>
+#include <Logger.h>
 
 namespace Storage {
 
@@ -22,6 +23,7 @@ public:
     void addFollowers(TContactId userId, const TContactIds &followerIds) {
         storage[userId].insert(followerIds.begin(), followerIds.end());
         for (const TContactId &followerId : followerIds) {
+            LOG("Storage::Contacts2::addFollowers(" << userId << ", " << followerId << ")");
             invertedIndex[followerId].insert(userId);
         }
     }

@@ -16,7 +16,7 @@ namespace User {
       };
 
       User::Value get(const User::Key &key) {
-          std::cout << "Storage::Users::add(" << key << ", " << storage[key].name << ", " << storage[key].lastname << ", " << storage[key].email << ")" << std::endl;
+          LOG("Storage::Users::add(" << key << ", " << storage[key].name << ", " << storage[key].lastname << ", " << storage[key].email << ")");
           return storage[key].setId(key);
       };
 

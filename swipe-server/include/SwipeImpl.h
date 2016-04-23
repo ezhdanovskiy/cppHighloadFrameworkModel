@@ -3,12 +3,11 @@
 
 #include <string>
 
-#include "SystemDefines.h"
-#include "User.h"
-#include "UserStorage.h"
-#include "ContactsStorage.h"
+#include <SwipeDefines.h>
+#include <ContactsStorage.h>
+#include <EventStorage.h>
+
 #include "Event.h"
-#include "EventStorage.h"
 
 namespace Swipe {
 
@@ -26,7 +25,7 @@ public:
 
     TUserIdsSet getFollowerIds(const TUserId &userId);
 
-    void addEvent(Event::Type eventType, TUserId ownerId, const std::string &text);
+    void addEvent(TUserId ownerId, const std::string &text, Event::Type eventType, const TUserIds &participantIds = TUserIds());
 
 private:
     Storage::Contacts2 *contactsStorage;
