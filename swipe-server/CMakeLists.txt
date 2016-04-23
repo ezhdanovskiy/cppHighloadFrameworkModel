@@ -9,7 +9,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SOURCE_FILES
     src/main.cpp
     src/Event.cpp
-    src/Subscriptions.cpp
     src/SwipeImpl.cpp
     )
 add_executable(${BIN_NAME} ${SOURCE_FILES})

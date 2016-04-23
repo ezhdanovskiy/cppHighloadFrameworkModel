@@ -4,7 +4,6 @@
 #include <UserStorage.h>
 #include <User.h>
 #include <Event.h>
-#include <Subscriptions.h>
 #include "SwipeImpl.h"
 
 int main() {
