@@ -8,7 +8,7 @@
 namespace Storage {
 
 namespace User {
-  typedef uint64_t Key;
+  typedef uint32_t Key;
 
   struct Value {
       Value() { }

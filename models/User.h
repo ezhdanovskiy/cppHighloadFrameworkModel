@@ -8,7 +8,7 @@ namespace Model {
 
 class User {
 public:
-    typedef Swipe::TUserId TUserId;
+    typedef System::TUserId TUserId;
 
     User(TUserId id);
 

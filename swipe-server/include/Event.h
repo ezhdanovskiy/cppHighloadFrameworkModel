@@ -5,6 +5,8 @@
 
 #include <User.h>
 
+#include "SwipeDefines.h"
+
 namespace Swipe {
 
 class Event {

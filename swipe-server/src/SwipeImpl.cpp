@@ -8,8 +8,13 @@ TUserId Impl::addUser(const std::string &name, const std::string &lastname, cons
     return Storage::User::add({name, lastname, email});
 }
 
-void Impl::subscribe(const TUserId &userId, const TUserId &followerId) {
+void Impl::addFollower(const TUserId &userId, const TUserId &followerId) {
     contactsStorage->addFollower(userId, followerId);
+}
+
+void Impl::addFollowers(const TUserId &userId, const TUserIds &followerIds) {
+    Storage::Contacts2::TContactIds contactIds(followerIds.begin(), followerIds.end());
+    contactsStorage->addFollowers(userId, contactIds);
 }
 
 void Impl::addEvent(Event::Type eventType, TUserId ownerId, const std::string &text) {

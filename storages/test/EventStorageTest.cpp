@@ -4,7 +4,7 @@
 
 TEST(EventStorageTest, SimpleAddAndGet) {
     int eventType = 1;
-    Swipe::TUserId ownerId = 1;
+    Storage::TUserId ownerId = 1;
     std::string eventText = "Event1";
 
     auto eventId = Storage::Event::add({eventType, ownerId, eventText});

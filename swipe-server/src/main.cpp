@@ -16,8 +16,7 @@ int main() {
     auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");
     auto userId3 = impl.addUser("Nicolas", "Cage", "N.Cage@ya.ru");
 
-    impl.subscribe(userId1, userId2);
-    impl.subscribe(userId1, userId3);
+    impl.addFollowers(userId1, {userId2, userId3});
 
     impl.addEvent(Swipe::Event::Type::open, userId1, "Event1");
     return 0;

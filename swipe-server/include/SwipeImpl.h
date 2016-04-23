@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include "SystemDefines.h"
 #include "User.h"
 #include "UserStorage.h"
 #include "ContactsStorage.h"
@@ -17,7 +18,9 @@ public:
 
     TUserId addUser(const std::string &name, const std::string &lastname, const std::string &email);
 
-    void subscribe(const TUserId &userId, const TUserId &followerId);
+    void addFollower(const TUserId &userId, const TUserId &followerId);
+
+    void addFollowers(const TUserId &userId, const TUserIds &followerIds);
 
     void addEvent(Event::Type eventType, TUserId ownerId, const std::string &text);
 

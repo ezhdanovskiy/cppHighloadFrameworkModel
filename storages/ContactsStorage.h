@@ -4,11 +4,13 @@
 #include <set>
 #include <map>
 
+#include <SystemDefines.h>
+
 namespace Storage {
 
 class Contacts2 {
 public:
-    typedef uint64_t TContactId;
+    typedef System::TContactId TContactId;
     typedef std::set<TContactId> TContactIds;
     typedef std::map<TContactId, TContactIds> TContactMap;
 

@@ -1,13 +1,14 @@
 #pragma once
 
-#include <User.h>
-#include <Logger.h>
-
 #include <map>
+
+#include <SystemDefines.h>
+#include <Logger.h>
+#include <User.h>
 
 namespace Storage {
 
-typedef Swipe::TUserId TUserId;
+typedef System::TUserId TUserId;
 
 class Events {
 public:
