@@ -38,9 +38,6 @@ TEST(PostStorageTest, Del) {
     {
         auto post = posts.get(postId);
         EXPECT_NE(postId, post.id);
-        EXPECT_NE(postType, post.type);
-        EXPECT_NE(ownerId, post.ownerId);
-        EXPECT_NE(postText, post.text);
     }
 
     EXPECT_FALSE(posts.del(postId));
