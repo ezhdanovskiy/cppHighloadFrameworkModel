@@ -11,7 +11,7 @@ typedef System::TUserId TUserId;
 typedef std::vector<TUserId> TUserIds;
 typedef std::set<TUserId> TUserIdsSet;
 
-enum EventType {
+enum PostType {
     open, friendsOnly, group
 };
 

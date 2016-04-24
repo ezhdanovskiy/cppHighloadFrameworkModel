@@ -14,6 +14,6 @@ int main() {
 
     impl.addFollowers(userId1, {userId2, userId3});
 
-    impl.addEvent(userId1, "Event1", Swipe::EventType::open);
+    impl.addPost(userId1, "Post1", Swipe::PostType::open);
     return 0;
 }

@@ -19,7 +19,7 @@ public:
 
     TUserIdsSet getFollowerIds(const TUserId &userId);
 
-    void addEvent(TUserId ownerId, const std::string &text, EventType eventType, const TUserIds &participantIds = TUserIds());
+    void addPost(TUserId ownerId, const std::string &text, PostType postType, const TUserIds &participantIds = TUserIds());
 
 private:
     MainStorage storage;

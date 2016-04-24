@@ -27,29 +27,29 @@ TUserIdsSet Impl::getFollowerIds(const TUserId &userId) {
     return TUserIdsSet(contactIds.begin(), contactIds.end());
 }
 
-void Impl::addEvent(TUserId ownerId, const std::string &text, EventType eventType, const TUserIds &participantIds) {
-    auto eventId = storage.getEvents().add({eventType, ownerId, text});
-    switch (eventType) {
-        case EventType::open: {
+void Impl::addPost(TUserId ownerId, const std::string &text, PostType postType, const TUserIds &participantIds) {
+    auto postId = storage.getPosts().add({postType, ownerId, text});
+    switch (postType) {
+        case PostType::open: {
             auto followers = storage.getContacts().getFollowers(ownerId);
             for (const auto &follower : followers) {
-                LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
+                LOG("Notify user(" << follower << ") about post{" << postId << ", '" << text << "'}")
             }
             break;
         }
-        case EventType::friendsOnly: {
+        case PostType::friendsOnly: {
             auto followers = storage.getContacts().getFollowers(ownerId);
             auto followings = storage.getContacts().getFollowings(ownerId);
             for (const auto &follower : followers) {
                 if (followings.count(follower)) {
-                    LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
+                    LOG("Notify user(" << follower << ") about post{" << postId << ", '" << text << "'}")
                 }
             }
             break;
         }
-        case EventType::group: {
+        case PostType::group: {
             for (const auto &participantId : participantIds) {
-                LOG("Notify user(" << participantId << ") about event{" << eventId << ", '" << text << "'}")
+                LOG("Notify user(" << participantId << ") about post{" << postId << ", '" << text << "'}")
             }
             break;
         }

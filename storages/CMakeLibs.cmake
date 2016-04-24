@@ -1,1 +1,1 @@
-set(STORAGE_LIBS UserStorage ContactsStorage EventStorage)
+set(STORAGE_LIBS UserStorage ContactsStorage PostStorage)

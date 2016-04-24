@@ -2,14 +2,14 @@
 
 #include <UserStorage.h>
 #include <ContactsStorage.h>
-#include <EventStorage.h>
+#include <PostStorage.h>
 
 namespace Swipe {
 
 class MainStorage {
     Storage::Users &users;
     Storage::Contacts contacts;
-    Storage::Events events;
+    Storage::Posts posts;
 public:
     MainStorage() : users(Storage::Users::getInstance()) { }
 
@@ -17,7 +17,7 @@ public:
 
     Storage::Contacts &getContacts() { return contacts; };
 
-    Storage::Events &getEvents() { return events; };
+    Storage::Posts &getPosts() { return posts; };
 };
 
 } // namespace Swipe

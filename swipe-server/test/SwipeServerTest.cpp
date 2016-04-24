@@ -40,7 +40,7 @@ TEST_F(SwipeServerTest, UserSubscription) {
     EXPECT_EQ(1, followerIds.count(userId4));
 }
 
-TEST_F(SwipeServerTest, Event) {
+TEST_F(SwipeServerTest, Post) {
     Swipe::Impl impl;
 
     auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
@@ -51,7 +51,7 @@ TEST_F(SwipeServerTest, Event) {
     impl.addFollowers(userId1, {userId2, userId3});
     impl.addFollowers(userId2, {userId1, userId3});
 
-    impl.addEvent(userId1, "Event1", Swipe::EventType::open);
-    impl.addEvent(userId1, "Event2", Swipe::EventType::friendsOnly);
-    impl.addEvent(userId1, "Event3", Swipe::EventType::group, {userId2, userId4});
+    impl.addPost(userId1, "Post1", Swipe::PostType::open);
+    impl.addPost(userId1, "Post2", Swipe::PostType::friendsOnly);
+    impl.addPost(userId1, "Post3", Swipe::PostType::group, {userId2, userId4});
 }

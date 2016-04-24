@@ -7,7 +7,7 @@
 
 namespace Storage {
 
-class Events {
+class Posts {
 public:
     typedef System::TUserId Key;
 
@@ -30,7 +30,7 @@ public:
     Key add(const Value &value) {
         Key key = storage.size() + 1;
         storage[key] = value;
-        LOG("Storage::Event::add(" << key << ", type=" << value.type << ", ownerId=" << value.ownerId << ", text='" << value.text << "')")
+        LOG("Storage::Post::add(" << key << ", type=" << value.type << ", ownerId=" << value.ownerId << ", text='" << value.text << "')")
         return key;
     };
 
