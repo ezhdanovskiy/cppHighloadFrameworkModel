@@ -5,41 +5,41 @@
 namespace Swipe {
 
 TUserId Impl::addUser(const std::string &name, const std::string &lastname, const std::string &email) {
-    return Storage::User::add({name, lastname, email});
+    return storage.getUsers().add({name, lastname, email});
 }
 
 Model::User Impl::getUser(const TUserId &userId) {
-    auto dbUser = Storage::User::get(userId);
+    auto dbUser = storage.getUsers().get(userId);
     return Model::User(dbUser.id, dbUser.name, dbUser.lastname, dbUser.email);
 }
 
 void Impl::addFollower(const TUserId &userId, const TUserId &followerId) {
-    contactsStorage->addFollower(userId, followerId);
+    storage.getContacts().addFollower(userId, followerId);
 }
 
 void Impl::addFollowers(const TUserId &userId, const TUserIds &followerIds) {
-    Storage::Contacts2::TContactIds contactIds(followerIds.begin(), followerIds.end());
-    contactsStorage->addFollowers(userId, contactIds);
+    Storage2::Contacts::TContactIds contactIds(followerIds.begin(), followerIds.end());
+    storage.getContacts().addFollowers(userId, contactIds);
 }
 
 TUserIdsSet Impl::getFollowerIds(const TUserId &userId) {
-    auto contactIds = contactsStorage->getFollowers(userId);
+    auto contactIds = storage.getContacts().getFollowers(userId);
     return TUserIdsSet(contactIds.begin(), contactIds.end());
 }
 
 void Impl::addEvent(TUserId ownerId, const std::string &text, Event::Type eventType, const TUserIds &participantIds) {
-    auto eventId = eventsStorage->add({eventType, ownerId, text});
+    auto eventId = storage.getEvents().add({eventType, ownerId, text});
     switch (eventType) {
         case Event::Type::open: {
-            auto followers = contactsStorage->getFollowers(ownerId);
+            auto followers = storage.getContacts().getFollowers(ownerId);
             for (const auto &follower : followers) {
                 LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
             }
             break;
         }
         case Event::Type::friendsOnly: {
-            auto followers = contactsStorage->getFollowers(ownerId);
-            auto followings = contactsStorage->getFollowings(ownerId);
+            auto followers = storage.getContacts().getFollowers(ownerId);
+            auto followings = storage.getContacts().getFollowings(ownerId);
             for (const auto &follower : followers) {
                 if (followings.count(follower)) {
                     LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")

@@ -8,13 +8,12 @@
 #include <EventStorage.h>
 
 #include "Event.h"
+#include "SwipeStorage.h"
 
 namespace Swipe {
 
 class Impl {
 public:
-    Impl(Storage::Contacts2 *contacts, Storage::Events *events) : contactsStorage(contacts), eventsStorage(events) { }
-
     TUserId addUser(const std::string &name, const std::string &lastname, const std::string &email);
 
     Model::User getUser(const TUserId &userId);
@@ -28,8 +27,7 @@ public:
     void addEvent(TUserId ownerId, const std::string &text, Event::Type eventType, const TUserIds &participantIds = TUserIds());
 
 private:
-    Storage::Contacts2 *contactsStorage;
-    Storage::Events *eventsStorage;
+    MainStorage storage;
 };
 
 } // namespace Swipe

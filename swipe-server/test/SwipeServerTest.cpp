@@ -10,9 +10,7 @@ struct SwipeServerTest : public ::testing::Test {
 };
 
 TEST_F(SwipeServerTest, User) {
-    auto contactsStorage = std::make_shared<Storage::Contacts2>();
-    auto eventsStorage = std::make_shared<Storage::Events>();
-    Swipe::Impl impl(contactsStorage.get(), eventsStorage.get());
+    Swipe::Impl impl;
 
     auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
 
@@ -24,9 +22,7 @@ TEST_F(SwipeServerTest, User) {
 }
 
 TEST_F(SwipeServerTest, UserSubscription) {
-    auto contactsStorage = std::make_shared<Storage::Contacts2>();
-    auto eventsStorage = std::make_shared<Storage::Events>();
-    Swipe::Impl impl(contactsStorage.get(), eventsStorage.get());
+    Swipe::Impl impl;
 
     auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
     auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");
@@ -45,9 +41,7 @@ TEST_F(SwipeServerTest, UserSubscription) {
 }
 
 TEST_F(SwipeServerTest, Event) {
-    auto contactsStorage = std::make_shared<Storage::Contacts2>();
-    auto eventsStorage = std::make_shared<Storage::Events>();
-    Swipe::Impl impl(contactsStorage.get(), eventsStorage.get());
+    Swipe::Impl impl;
 
     auto userId1 = impl.addUser("John", "Smith", "J.Smith@ya.ru");
     auto userId2 = impl.addUser("George", "Washington", "G.Washington@ya.ru");
