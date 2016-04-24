@@ -16,11 +16,6 @@ public:
 
         Value(int type, System::TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
 
-        Value &setId(Key id) {
-            Value::id = id;
-            return *this;
-        }
-
         Key id = 0;
         int type;
         System::TUserId ownerId;
@@ -28,14 +23,25 @@ public:
     };
 
     Key add(const Value &value) {
-        Key key = storage.size() + 1;
+        Key key = static_cast<Key>(storage.size() + 1);
         storage[key] = value;
-        LOG("Storage::Post::add(" << key << ", type=" << value.type << ", ownerId=" << value.ownerId << ", text='" << value.text << "')")
+        LOG("Storage::Post::add(" << key << ", type=" << value.type << ", ownerId=" << value.ownerId << ", text='" << value.text << "')");
         return key;
     };
 
     Value get(const Key &key) {
-        return storage[key].setId(key);
+        auto it = storage.find(key);
+        if (it != storage.end()) {
+            it->second.id = key;
+            LOG("Storage::Post::get(" << key << ", type=" << it->second.type << ", ownerId=" << it->second.ownerId << ", text='" << it->second.text << "')");
+            return it->second;
+        }
+        return Value();
+    };
+
+    bool del(const Key &key) {
+        LOG("Storage::Post::del(" << key << ")");
+        return storage.erase(key) > 0;
     };
 
 private:
