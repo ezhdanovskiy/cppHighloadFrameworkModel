@@ -1,5 +1,4 @@
-#ifndef CPPSWIPE_SWIPESTORAGE_H
-#define CPPSWIPE_SWIPESTORAGE_H
+#pragma once
 
 #include <UserStorage.h>
 #include <ContactsStorage.h>
@@ -22,5 +21,3 @@ public:
 };
 
 } // namespace Swipe
-
-#endif //CPPSWIPE_SWIPESTORAGE_H

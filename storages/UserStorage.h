@@ -1,9 +1,6 @@
 #pragma once
 
 #include <map>
-#include <inttypes.h>
-#include <string>
-#include <iostream>
 
 #include <SystemDefines.h>
 #include <Logger.h>

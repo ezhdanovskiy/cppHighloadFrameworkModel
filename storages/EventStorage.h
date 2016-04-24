@@ -4,7 +4,6 @@
 
 #include <SystemDefines.h>
 #include <Logger.h>
-#include <User.h>
 
 namespace Storage {
 

@@ -1,11 +1,7 @@
-#ifndef CPPSWIPE_SWIPEIMPL_H
-#define CPPSWIPE_SWIPEIMPL_H
-
-#include <string>
+#pragma once
 
 #include <SwipeDefines.h>
-#include <ContactsStorage.h>
-#include <EventStorage.h>
+#include <User.h>
 
 #include "SwipeStorage.h"
 
@@ -30,5 +26,3 @@ private:
 };
 
 } // namespace Swipe
-
-#endif //CPPSWIPE_SWIPEIMPL_H

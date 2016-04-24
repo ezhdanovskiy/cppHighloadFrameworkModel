@@ -1,5 +1,4 @@
-#ifndef CPPSWIPE_SWIPEDEFINES_H
-#define CPPSWIPE_SWIPEDEFINES_H
+#pragma once
 
 #include <vector>
 #include <set>
@@ -17,5 +16,3 @@ enum EventType {
 };
 
 } // namespace Swipe
-
-#endif //CPPSWIPE_SWIPEDEFINES_H

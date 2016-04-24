@@ -1,6 +1,5 @@
 #pragma once
 
-#include <inttypes.h>
 #include <set>
 #include <map>
 
@@ -23,7 +22,7 @@ public:
     void addFollowers(TContactId userId, const TContactIds &followerIds) {
         storage[userId].insert(followerIds.begin(), followerIds.end());
         for (const TContactId &followerId : followerIds) {
-            LOG("Storage::Contacts2::addFollowers(" << userId << ", " << followerId << ")");
+            LOG("Storage::Contacts::addFollowers(" << userId << ", " << followerId << ")");
             invertedIndex[followerId].insert(userId);
         }
     }
