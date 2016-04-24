@@ -51,7 +51,7 @@ TEST_F(SwipeServerTest, Event) {
     impl.addFollowers(userId1, {userId2, userId3});
     impl.addFollowers(userId2, {userId1, userId3});
 
-    impl.addEvent(userId1, "Event1", Swipe::Event::Type::open);
-    impl.addEvent(userId1, "Event2", Swipe::Event::Type::friendsOnly);
-    impl.addEvent(userId1, "Event3", Swipe::Event::Type::group, {userId2, userId4});
+    impl.addEvent(userId1, "Event1", Swipe::EventType::open);
+    impl.addEvent(userId1, "Event2", Swipe::EventType::friendsOnly);
+    impl.addEvent(userId1, "Event3", Swipe::EventType::group, {userId2, userId4});
 }

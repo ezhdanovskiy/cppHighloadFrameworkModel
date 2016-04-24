@@ -7,7 +7,6 @@
 #include <ContactsStorage.h>
 #include <EventStorage.h>
 
-#include "Event.h"
 #include "SwipeStorage.h"
 
 namespace Swipe {
@@ -24,7 +23,7 @@ public:
 
     TUserIdsSet getFollowerIds(const TUserId &userId);
 
-    void addEvent(TUserId ownerId, const std::string &text, Event::Type eventType, const TUserIds &participantIds = TUserIds());
+    void addEvent(TUserId ownerId, const std::string &text, EventType eventType, const TUserIds &participantIds = TUserIds());
 
 private:
     MainStorage storage;

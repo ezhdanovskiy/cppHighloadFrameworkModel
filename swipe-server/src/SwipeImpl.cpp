@@ -27,17 +27,17 @@ TUserIdsSet Impl::getFollowerIds(const TUserId &userId) {
     return TUserIdsSet(contactIds.begin(), contactIds.end());
 }
 
-void Impl::addEvent(TUserId ownerId, const std::string &text, Event::Type eventType, const TUserIds &participantIds) {
+void Impl::addEvent(TUserId ownerId, const std::string &text, EventType eventType, const TUserIds &participantIds) {
     auto eventId = storage.getEvents().add({eventType, ownerId, text});
     switch (eventType) {
-        case Event::Type::open: {
+        case EventType::open: {
             auto followers = storage.getContacts().getFollowers(ownerId);
             for (const auto &follower : followers) {
                 LOG("Notify user(" << follower << ") about event{" << eventId << ", '" << text << "'}")
             }
             break;
         }
-        case Event::Type::friendsOnly: {
+        case EventType::friendsOnly: {
             auto followers = storage.getContacts().getFollowers(ownerId);
             auto followings = storage.getContacts().getFollowings(ownerId);
             for (const auto &follower : followers) {
@@ -47,7 +47,7 @@ void Impl::addEvent(TUserId ownerId, const std::string &text, Event::Type eventT
             }
             break;
         }
-        case Event::Type::group: {
+        case EventType::group: {
             for (const auto &participantId : participantIds) {
                 LOG("Notify user(" << participantId << ") about event{" << eventId << ", '" << text << "'}")
             }

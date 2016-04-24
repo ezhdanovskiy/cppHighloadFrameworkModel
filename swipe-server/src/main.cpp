@@ -3,7 +3,6 @@
 
 #include <UserStorage.h>
 #include <User.h>
-#include <Event.h>
 #include "SwipeImpl.h"
 
 int main() {
@@ -15,6 +14,6 @@ int main() {
 
     impl.addFollowers(userId1, {userId2, userId3});
 
-    impl.addEvent(userId1, "Event1", Swipe::Event::Type::open);
+    impl.addEvent(userId1, "Event1", Swipe::EventType::open);
     return 0;
 }

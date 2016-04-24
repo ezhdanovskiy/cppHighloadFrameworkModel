@@ -1,14 +1,15 @@
-#include <EventStorage.h>
-
 #include <gtest/gtest.h>
+
+#include <EventStorage.h>
 
 TEST(EventStorageTest, SimpleAddAndGet) {
     int eventType = 1;
-    Storage::TUserId ownerId = 1;
+    System::TUserId ownerId = 1;
     std::string eventText = "Event1";
 
-    auto eventId = Storage::Event::add({eventType, ownerId, eventText});
-    auto event = Storage::Event::get(eventId);
+    Storage::Events events;
+    auto eventId = events.add({eventType, ownerId, eventText});
+    auto event = events.get(eventId);
 
     EXPECT_EQ(eventId, event.id);
     EXPECT_EQ(eventType, event.type);

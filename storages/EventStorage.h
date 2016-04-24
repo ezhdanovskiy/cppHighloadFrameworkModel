@@ -8,16 +8,14 @@
 
 namespace Storage {
 
-typedef System::TUserId TUserId;
-
 class Events {
 public:
-    typedef uint32_t Key;
+    typedef System::TUserId Key;
 
     struct Value {
         Value() { }
 
-        Value(int type, TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
+        Value(int type, System::TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
 
         Value &setId(Key id) {
             Value::id = id;
@@ -26,7 +24,7 @@ public:
 
         Key id = 0;
         int type;
-        TUserId ownerId;
+        System::TUserId ownerId;
         std::string text;
     };
 
@@ -45,29 +43,4 @@ private:
     std::map<Key, Value> storage;
 };
 
-namespace Event {
-
-typedef uint32_t Key;
-
-struct Value {
-    Value() { }
-
-    Value(int type, TUserId ownerId, const std::string &text) : type(type), ownerId(ownerId), text(text) { }
-
-    Value &setId(Key id) {
-        Value::id = id;
-        return *this;
-    }
-
-    Key id = 0;
-    int type;
-    TUserId ownerId;
-    std::string text;
-};
-
-Key add(const Value &value);
-
-Value get(const Key &key);
-
-}
-}
+} // namespace Storage
