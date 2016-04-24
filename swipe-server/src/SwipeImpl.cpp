@@ -18,7 +18,7 @@ void Impl::addFollower(const TUserId &userId, const TUserId &followerId) {
 }
 
 void Impl::addFollowers(const TUserId &userId, const TUserIds &followerIds) {
-    Storage2::Contacts::TContactIds contactIds(followerIds.begin(), followerIds.end());
+    Storage::Contacts::TContactIds contactIds(followerIds.begin(), followerIds.end());
     storage.getContacts().addFollowers(userId, contactIds);
 }
 

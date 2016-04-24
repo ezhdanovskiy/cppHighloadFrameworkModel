@@ -2,14 +2,19 @@
 
 #include <gtest/gtest.h>
 
-TEST(ContactsStorageTest, getFollowers) {
-    Storage::Contacts::TContactId userId = 1;
-    Storage::Contacts::TContactId followerId1 = 2;
-    Storage::Contacts::TContactId followerId2 = 3;
+using TContactId = Storage::Contacts::TContactId;
+using TContactIds = Storage::Contacts::TContactIds;
 
-    Storage::Contacts::addFollower(userId, followerId1);
-    Storage::Contacts::addFollower(userId, followerId2);
-    auto followers = Storage::Contacts::getFollowers(userId);
+TEST(ContactsStorageTest, getFollowers) {
+    Storage::Contacts contacts;
+
+    TContactId userId = 1;
+    TContactId followerId1 = 2;
+    TContactId followerId2 = 3;
+
+    contacts.addFollower(userId, followerId1);
+    contacts.addFollower(userId, followerId2);
+    auto followers = contacts.getFollowers(userId);
 
     EXPECT_EQ(2, followers.size());
     EXPECT_TRUE(followers.find(followerId1) != followers.end());
@@ -17,13 +22,15 @@ TEST(ContactsStorageTest, getFollowers) {
 }
 
 TEST(ContactsStorageTest, getFollowings) {
-    Storage::Contacts::TContactId userId1 = 1;
-    Storage::Contacts::TContactId userId2 = 2;
-    Storage::Contacts::TContactId followerId = 3;
+    Storage::Contacts contacts;
 
-    Storage::Contacts::addFollower(userId1, followerId);
-    Storage::Contacts::addFollower(userId2, followerId);
-    auto followers = Storage::Contacts::getFollowings(followerId);
+    TContactId userId1 = 1;
+    TContactId userId2 = 2;
+    TContactId followerId = 3;
+
+    contacts.addFollower(userId1, followerId);
+    contacts.addFollower(userId2, followerId);
+    auto followers = contacts.getFollowings(followerId);
 
     EXPECT_EQ(2, followers.size());
     EXPECT_TRUE(followers.find(userId1) != followers.end());
@@ -31,11 +38,13 @@ TEST(ContactsStorageTest, getFollowings) {
 }
 
 TEST(ContactsStorageTest, addFollowers) {
-    Storage::Contacts::TContactId userId = 1;
-    Storage::Contacts::TContactIds followerIds = {2, 3, 4};
+    Storage::Contacts contacts;
 
-    Storage::Contacts::addFollowers(userId, followerIds);
-    auto followers = Storage::Contacts::getFollowers(userId);
+    TContactId userId = 1;
+    TContactIds followerIds = {2, 3, 4};
+
+    contacts.addFollowers(userId, followerIds);
+    auto followers = contacts.getFollowers(userId);
 
     EXPECT_EQ(3, followers.size());
     for (const auto &followerId : followerIds) {
