@@ -1,16 +1,15 @@
 #include "User.h"
 
 #include <UserStorage.h>
-
-#include <iostream>
+#include <Logger.h>
 
 namespace Model {
 
 User::User(TUserId id) : id(id) {
-    auto v = Storage::User::get(id);
+    auto v = Storage::Users::getInstance().get(id);
     name = v.name;
     lastname = v.lastname;
-    std::cout << "Hello, I am " << name << "! id=" << id << std::endl;
+    LOG("Hello, I am " << name << "! id=" << id);
 }
 
 } // namespace Model

@@ -1,7 +1,7 @@
+#include <gtest/gtest.h>
+
 #include <User.h>
 #include <UserStorage.h>
-
-#include <gtest/gtest.h>
 
 struct ModelUserTest : public ::testing::Test {
 
@@ -14,7 +14,7 @@ struct ModelUserTest : public ::testing::Test {
     }
 
     static void SetUpTestCase() {
-        Storage::User::add({"John", "Smith", "J.Smith@ya.ru"});
+        Storage::Users::getInstance().add({"John", "Smith", "J.Smith@ya.ru"});
     }
 };
 
