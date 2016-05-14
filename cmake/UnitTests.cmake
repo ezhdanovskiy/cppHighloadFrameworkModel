@@ -6,3 +6,8 @@ function(add_gmock_test target)
     target_link_libraries(${target} gmock_main)
     add_test(${target} ${target} --gtest_output=xml:${target}_gtestReport.xml)
 endfunction()
+
+function(add_gmock_test_libraries target)
+    message(STATUS "add_gmock_test_libraries(${target} ${ARGN})")
+    target_link_libraries(${target} ${ARGN})
+endfunction()
