@@ -3,7 +3,6 @@
 #include <map>
 
 #include <SystemDefines.h>
-#include <Logger.h>
 
 namespace Storage {
 
@@ -22,27 +21,11 @@ public:
         std::string text;
     };
 
-    Key add(const Value &value) {
-        Key key = static_cast<Key>(storage.size() + 1);
-        storage[key] = value;
-        LOG("Storage::Post::add(" << key << ", type=" << value.type << ", ownerId=" << value.ownerId << ", text='" << value.text << "')");
-        return key;
-    };
+    Key add(const Value &value);
 
-    Value get(const Key &key) {
-        auto it = storage.find(key);
-        if (it != storage.end()) {
-            it->second.id = key;
-            LOG("Storage::Post::get(" << key << ", type=" << it->second.type << ", ownerId=" << it->second.ownerId << ", text='" << it->second.text << "')");
-            return it->second;
-        }
-        return Value();
-    };
+    Value get(const Key &key);
 
-    bool del(const Key &key) {
-        LOG("Storage::Post::del(" << key << ")");
-        return storage.erase(key) > 0;
-    };
+    bool del(const Key &key);
 
 private:
     std::map<Key, Value> storage;

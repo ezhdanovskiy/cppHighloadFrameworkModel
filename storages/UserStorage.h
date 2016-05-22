@@ -3,7 +3,6 @@
 #include <map>
 
 #include <SystemDefines.h>
-#include <Logger.h>
 
 namespace Storage {
 
@@ -27,17 +26,9 @@ public:
         std::string email;
     };
 
-    Key add(const Value &value) {
-        Key key = storage.size() + 1;
-        storage[key] = value;
-        LOG("Storage::Users::add(" << key << ", " << value.name << ", " << value.lastname << ", " << value.email << ")");
-        return key;
-    };
+    Key add(const Value &value);
 
-    Value get(const Key &key) {
-        LOG("Storage::Users::add(" << key << ", " << storage[key].name << ", " << storage[key].lastname << ", " << storage[key].email << ")");
-        return storage[key].setId(key);
-    };
+    Value get(const Key &key);
 
     static Users &getInstance() {
         static Users instance;

@@ -1,6 +1,6 @@
 #include "SwipeImpl.h"
 
-#include <UserStorage.h>
+#include <Logger.h>
 
 namespace Swipe {
 

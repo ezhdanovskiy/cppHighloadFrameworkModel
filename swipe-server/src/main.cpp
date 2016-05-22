@@ -1,8 +1,5 @@
 #include <iostream>
-#include <memory>
 
-#include <UserStorage.h>
-#include <User.h>
 #include "SwipeImpl.h"
 
 int main() {
